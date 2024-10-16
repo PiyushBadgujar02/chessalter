@@ -33,7 +33,7 @@ const chess = new Chess()
 
 const io = new Server(server, {
     cors: {
-        origin: 'https://extraordinary-nougat-386f24.netlify.app',
+        origin: 'http://localhost:3000',
         methods: ['GET', 'POST'],
     }
 })
@@ -54,6 +54,7 @@ io.on('connection', function (uniquesocket) {
 
     if (!players.white) {
         players.white = uniquesocket.id;
+        chess.reset();
         uniquesocket.emit('PlayerRole', 'w')
     } else if (!players.black) {
         players.black = uniquesocket.id;
@@ -62,7 +63,7 @@ io.on('connection', function (uniquesocket) {
     else {
         uniquesocket.emit('spectatorRole', 's')
     }
-    
+
 
     uniquesocket.on('disconnect', function () {
         if (uniquesocket.id === players.white) {
@@ -109,6 +110,6 @@ if ('production' === "production") {
 
 
 
-server.listen(PORT, () => {
+server.listen(3001, () => {
     console.log(`Server is running on port ${PORT}`);
 });
