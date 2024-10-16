@@ -33,7 +33,7 @@ const chess = new Chess()
 
 const io = new Server(server, {
     cors: {
-        origin: 'http://localhost:3000',
+        origin: 'https://extraordinary-nougat-386f24.netlify.app',
         methods: ['GET', 'POST'],
     }
 })
@@ -110,6 +110,6 @@ if ('production' === "production") {
 
 
 
-server.listen(3001, () => {
+server.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
