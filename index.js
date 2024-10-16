@@ -62,6 +62,7 @@ io.on('connection', function (uniquesocket) {
     else {
         uniquesocket.emit('spectatorRole', 's')
     }
+    
 
     uniquesocket.on('disconnect', function () {
         if (uniquesocket.id === players.white) {
